@@ -2,7 +2,6 @@
 import React from 'react';
 import Container from './Container';
 import Link from 'next/link';
-
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
 
@@ -10,7 +9,6 @@ const Navbar =async () => {
     const { getUser } = await getKindeServerSession()
     const user = await getUser()
     console.log(user)
-    
     const menuLinks = <>
         <li><Link href={'/'}>Home</Link></li>
         <li><Link href={'/profile'}>Profile</Link></li>
@@ -51,7 +49,7 @@ const Navbar =async () => {
                     </div>
                     <div className="navbar-end">
                         {
-                            user && user.email ? <Link href={'/api/auth/logout'}>Logout</Link> : <Link href={'/api/auth/login'}>Login</Link>
+                            user && user.email ? <Link className='bg-cyan-500 text-white/80 py-2 px-4 rounded-md font-bold' href={'/api/auth/logout'}>Logout</Link> : <Link href={'/api/auth/login'} className='bg-cyan-500 text-white/80 py-2 px-4 rounded-md font-bold'>Login</Link>
                         }
                         {/* <LoginLink>Login</LoginLink>
                         <LogoutLink>Logout</LogoutLink> */}
