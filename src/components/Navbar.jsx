@@ -7,9 +7,9 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
 
 const Navbar =async () => {
-    const { getUser } = getKindeServerSession()
+    const { getUser } = await getKindeServerSession()
     const user = await getUser()
-    // console.log(user)
+    console.log(user)
     
     const menuLinks = <>
         <li><Link href={'/'}>Home</Link></li>
@@ -51,7 +51,7 @@ const Navbar =async () => {
                     </div>
                     <div className="navbar-end">
                         {
-                            user ? <Link href={'/api/auth/logout'}>Logout</Link> : <Link href={'/api/auth/login'}>Login</Link>
+                            user && user.email ? <Link href={'/api/auth/logout'}>Logout</Link> : <Link href={'/api/auth/login'}>Login</Link>
                         }
                         {/* <LoginLink>Login</LoginLink>
                         <LogoutLink>Logout</LogoutLink> */}
